@@ -2,7 +2,7 @@
 
 一个使用 Vue 3 + TypeScript 开发的现代化贪吃蛇游戏。
 
-在线演示 [https://metools.online/snake/](https://metools.online/snake/)
+在线演示 [https://metool.online/snake/](https://metool.online/snake/)
 
 ## 功能特点
 
