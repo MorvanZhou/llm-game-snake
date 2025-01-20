@@ -2,6 +2,8 @@
 
 一个使用 Vue 3 + TypeScript 开发的现代化贪吃蛇游戏。
 
+在线演示 [https://metools.online/snake/](https://metools.online/snake/)
+
 ## 功能特点
 
 - 🎮 支持键盘和触屏控制
