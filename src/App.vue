@@ -12,8 +12,8 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
-  overscroll-behavior: contain;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch; /* 添加平滑滚动 */
 }
 
 #app {

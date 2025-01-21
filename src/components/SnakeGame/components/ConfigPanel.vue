@@ -193,14 +193,20 @@ const handleTouchEnd = () => {
   cursor: not-allowed;
 }
 
-/* 添加以下全局样式 */
+/* 修改全局样式 */
 :global(body) {
-  overscroll-behavior: none; /* 防止页面反弹 */
-  touch-action: pan-x pan-y; /* 允许页面滚动，但防止其他触摸行为 */
+  touch-action: pan-x pan-y; /* 允许页面滚动 */
 }
 
 :global(.game-wrapper) {
-  overscroll-behavior: contain; /* 防止滚动传播到父元素 */
-  touch-action: none; /* 在游戏区域内禁用所有默认触摸行为 */
+  touch-action: pan-x pan-y; /* 允许页面滚动 */
+}
+
+:global(.direction-pad) {
+  touch-action: none; /* 只在控制按钮区域禁用默认触摸行为 */
+}
+
+:global(.slider) {
+  touch-action: none; /* 只在滑块上禁用默认触摸行为 */
 }
 </style>
