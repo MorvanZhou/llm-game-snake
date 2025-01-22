@@ -31,18 +31,10 @@
       </div>
 
       <div class="game-controls">
-        <div class="mobile-controls" v-if="isMobileDevice">
-          <div class="direction-pad">
-            <div class="top-row">
-              <button class="direction-btn up" @touchstart.prevent="handleDirection('up')">⬆</button>
-            </div>
-            <div class="middle-row">
-              <button class="direction-btn left" @touchstart.prevent="handleDirection('left')">⬅</button>
-              <button class="direction-btn down" @touchstart.prevent="handleDirection('down')">⬇</button>
-              <button class="direction-btn right" @touchstart.prevent="handleDirection('right')">➡</button>
-            </div>
-          </div>
-        </div>
+        <mobile-controls
+          :is-mobile-device="isMobileDevice"
+          @direction="handleDirection"
+        />
       </div>
     </div>
   </div>
@@ -64,6 +56,7 @@ import { gameConfig } from './SnakeGame/config/gameConfig';
 import ConfigPanel from './SnakeGame/components/ConfigPanel.vue';
 import GameBoard from './SnakeGame/components/GameBoard.vue';
 import GameOverDialog from './SnakeGame/components/GameOverDialog.vue';
+import MobileControls from './SnakeGame/components/MobileControls.vue';
 
 // 游戏状态
 const snake = ref<Position[]>([{ x: 0, y: 0 }]);
@@ -332,67 +325,6 @@ onBeforeUnmount(() => {
   flex-direction: column;
   align-items: center;
   gap: 20px;
-}
-
-.mobile-controls {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-}
-
-.direction-pad {
-  display: grid;
-  grid-template-rows: auto auto;
-  gap: 5px;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  width: 100%;
-}
-
-.top-row {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 5px;
-}
-
-.middle-row {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  gap: 5px;
-  justify-content: center;
-}
-
-.center-space {
-  width: 65px;
-  height: 65px;
-}
-
-.direction-btn {
-  width: 65px;
-  height: 65px;
-  border-radius: 8px;
-  border: 2px solid rgba(0, 255, 157, 0.3);
-  background: rgba(0, 255, 157, 0.15);
-  color: var(--primary-color);
-  font-size: 24px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-  box-shadow: 0 0 10px rgba(0, 255, 157, 0.2);
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-  user-select: none;
-}
-
-.direction-btn:active {
-  transform: scale(0.95);
-  background: rgba(0, 255, 157, 0.3);
-  box-shadow: 0 0 15px rgba(0, 255, 157, 0.4);
-  border-color: rgba(0, 255, 157, 0.5);
 }
 
 @media (max-width: 768px) {

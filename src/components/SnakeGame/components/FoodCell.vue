@@ -1,48 +1,37 @@
 <template>
   <div
-    class="game-food"
-    :style="getFoodStyle"
+    class="food-cell"
+    :style="{
+      left: `${position.x * gridSize}px`,
+      top: `${position.y * gridSize}px`,
+      width: `${gridSize}px`,
+      height: `${gridSize}px`
+    }"
   />
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps } from 'vue';
+import { defineProps } from 'vue';
 import type { Position } from '../types';
 
-const props = defineProps<{
+defineProps<{
   position: Position;
   gridSize: number;
 }>();
-
-const getFoodStyle = computed(() => ({
-  width: `${props.gridSize}px`,
-  height: `${props.gridSize}px`,
-  left: `${props.position.x * props.gridSize}px`,
-  top: `${props.position.y * props.gridSize}px`,
-}));
 </script>
 
 <style scoped>
-.game-food {
+.food-cell {
   position: absolute;
-  background: linear-gradient(45deg, #ff0099, #ff4d4d);
+  background: #ff0099;
   border-radius: 50%;
-  box-shadow: 0 0 15px rgba(255, 0, 153, 0.6);
-  animation: pulse 1.5s infinite;
+  box-shadow: 0 0 10px rgba(255, 0, 153, 0.6);
+  animation: pulse 1s ease-in-out infinite;
 }
 
 @keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 15px rgba(255, 0, 153, 0.6);
-  }
-  50% {
-    transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(255, 0, 153, 0.8);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 15px rgba(255, 0, 153, 0.6);
-  }
+  0% { transform: scale(0.95); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(0.95); }
 }
 </style>

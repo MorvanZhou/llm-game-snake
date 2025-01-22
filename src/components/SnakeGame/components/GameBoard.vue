@@ -58,6 +58,7 @@ onMounted(() => {
   
   return () => window.removeEventListener('resize', updateBoardSize);
 });
+
 </script>
 
 <style scoped>
@@ -99,6 +100,21 @@ onMounted(() => {
       rgba(0, 255, 157, 0.05) var(--grid-size)
     );
   pointer-events: none;
+}
+
+.snake-cell {
+  background: var(--primary-color);
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0, 255, 157, 0.5);
+}
+
+.snake-head {
+  background: #ff9d00;  /* 明亮的橙色 */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255, 157, 0, 0.8);
+  transform: scale(1.1);  /* 让头部略大一些 */
+  z-index: 2;
+  border: 2px solid #ffd700;  /* 金色边框 */
 }
 
 @media (max-width: 768px) {
